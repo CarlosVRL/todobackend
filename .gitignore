@@ -1,0 +1,10 @@
+# Intellij IDE
+.idea
+cd-docker-ansible.iml
+
+# Python Virtual
+venv
+*.pyc
+
+# Database
+*.sqlite3

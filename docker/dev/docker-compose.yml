@@ -6,7 +6,7 @@ test:
   links:
     - db
   environment:
-    DJANGO_SETTINGS_MODLE: todobackend.settings.test
+    DJANGO_SETTINGS_MODULE: todobackend.settings.test
     MYSQL_HOST: db
     MYSQL_USER: root
     MYSQL_PASSWORD: password
@@ -24,5 +24,5 @@ cache:
   build: ../../
   dockerfile: docker/dev/Dockerfile
   volumes:
-    - /tmp/cache:/cache
+    - pip-cache:/cache
   entrypoint: "true"

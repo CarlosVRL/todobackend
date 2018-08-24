@@ -8,8 +8,13 @@ RUN . /appenv/bin/activate && \
 
 ENV WHEELHOUSE=/wheelhouse PIP_WHEEL_DIR=/wheelhouse PIP_FIND_LINKS=/wheelhouse XDG_CACHE_HOME=/cache
 
+# OUTPUT: Build artifacts (Wheels)
 VOLUME /wheelhouse
 
+# OUTPUT: Build cache
+VOLUME /build
+
+# OUTPUT: Test reports
 VOLUME /reports
 
 COPY scripts/test.sh /usr/local/bin/test.sh

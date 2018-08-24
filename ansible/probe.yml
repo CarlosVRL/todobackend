@@ -1,15 +1,15 @@
 ---
 - name: Probe Host
-  hosts: loclhost
+  hosts: localhost
   connection: local
   gather_facts: no
   tasks:
   - name: Set facts
     set_fact:
-      probe_host: "{{ lookup('env','PROBE_HOST' }}"
-      probe_port: "{{ lookup('env','PROBE_PORT' }}"
-      probe_delay: "{{ lookup('env','PROBE_DELAY' | default(0, true) }}"
-      probe_timeout: "{{ lookup('env','PROBE_TIMEOUT' | default(180, true) }}"
+      probe_host: "{{ lookup('env','PROBE_HOST') }}"
+      probe_port: "{{ lookup('env','PROBE_PORT') }}"
+      probe_delay: "{{ lookup('env','PROBE_DELAY') | default(0, true) }}"
+      probe_timeout: "{{ lookup('env','PROBE_TIMEOUT') | default(180, true) }}"
   - name: Message
     debug:
       msg: >

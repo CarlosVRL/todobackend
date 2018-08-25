@@ -8,3 +8,6 @@ venv
 
 # Database
 *.sqlite3
+
+# Artifacts
+target

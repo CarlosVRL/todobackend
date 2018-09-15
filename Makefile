@@ -1,5 +1,11 @@
-.PHONY test build release
+.PHONY: test build release
 
 test:
-	@ echo "Hello"
-	@ echo "from make"
+	docker-compose -f docker/dev/docker-compose.yml build
+	docker-compose -f docker/dev/docker-compose.yml up agent
+	docker-compose -f docker/dev/docker-compose.yml up test
+
+build:
+
+
+release:

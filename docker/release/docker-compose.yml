@@ -47,7 +47,7 @@ db:
 agent:
   image: fire/ansible
   volumes:
-    - ../../ansible/probe.yml:/ansible/site/yml
+    - ../../ansible/probe.yml:/ansible/site.yml
   links:
     - db
   environment:

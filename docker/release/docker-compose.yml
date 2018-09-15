@@ -19,9 +19,10 @@ app:
     - "--die-on-term"
 
 nginx:
-  image: nginx
-  volumes:
-    - ./todobackend.conf:/etc/nginx/conf.d/todobackend.conf
+  build: .
+  dockerfile: Dockerfile.nginx
+  links:
+    - app
   ports:
     - "8000:8000"
   volumes_from:

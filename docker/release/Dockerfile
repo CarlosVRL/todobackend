@@ -1,4 +1,4 @@
-FROM fire/todobackend-base:latest
+FROM cvarela42/todobackend-base:latest
 
 COPY target /wheelhouse
 

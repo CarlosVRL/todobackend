@@ -1,4 +1,4 @@
-FROM fire/todobackend-base:latest
+FROM cvarela42/todobackend-base:latest
 
 RUN apt-get update && \
     apt-get install -qy python-dev libmysqlclient-dev

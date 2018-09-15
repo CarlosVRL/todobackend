@@ -88,7 +88,7 @@ APP_CONTAINER_ID := $$(docker-compose -p $(REL_PROJECT) -f $(REL_COMPOSE_FILE) p
 
 IMAGE_ID := $$(docker inspect -f '{{ .Image }}' $(APP_CONTAINER_ID))
 
-ifeq (tag, $(firstword $(MAKECMDGOALS))
+ifeq (tag, $(firstword $(MAKECMDGOALS)))
     TAG_ARGS := $(wordlist 2, $(words $(MAKECMDGOALS)), $(MAKECMDGOALS))
     ifeq ($(TAG_ARGS), )
         $(error You must specify a tag)

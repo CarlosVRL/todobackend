@@ -79,7 +79,7 @@ clean:
 	${INFO} "Removing dangling images..."
 	@ docker images -q -f dangling=true -f label=application=$(REPO_NAME) | xargs -I ARGS docker rmi -f ARGS
 	${INFO} "Clean complete"
-
+a
 tag:
 	${INFO} "Tagging release image with tags $(TAG_ARGS)..."
 	@ $(foreach tag, $(TAG_ARGS), docker tag $(IMAGE_ID) $(DOCKER_REGISTRY)/$(ORG_NAME)/$(REPO_NAME):$(tag);)
@@ -95,7 +95,7 @@ login:
 	@ docker login -u $$DOCKER_USER -p $$DOCKER_PASSWORD -e $$DOCKER_EMAIL $(DOCKER_REGISTRY_AUTH)
 	${INFO} "Logged into Docker registry $$DOCKER_REGISTRY..."
 
-login:
+logout:
 	${INFO} "Logging out of Docker registry $$DOCKER_REGISTRY..."
 	@ docker logout
 	${INFO} "Logged out of Docker registry $$DOCKER_REGISTRY..."

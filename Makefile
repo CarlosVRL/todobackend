@@ -12,6 +12,12 @@ DEV_PROJECT := $(REL_PROJECT)dev
 
 APP_SERVICE_NAME := app
 
+BUILD_TAG_EXPRESSION ?= date -u +%Y%m%d%H%M%S
+
+BUILD_EXPRESSION := $(shell $(BUILD_TAG_EXPRESSION))
+
+BUILD_TAG ?= $(BUILD_EXPRESSION)
+
 # Check and Inspect logs
 INSPECT := $$(docker-compose -p $$1 -f $$2 ps -q $$3 | xargs -I ARGS docker inspect -f "{{ .State.ExitCode }}" ARGS)
 
@@ -21,7 +27,7 @@ CHECK := @bash -c '\
 
 DOCKER_REGISTRY ?= docker.io
 
-.PHONY: test build release clean tag
+.PHONY: test build release clean tag buildtag
 
 test:
 	${INFO} "Pulling latest images..."
@@ -75,6 +81,11 @@ clean:
 tag:
 	${INFO} "Tagging release image with tags $(TAG_ARGS)..."
 	@ $(foreach tag, $(TAG_ARGS), docker tag $(IMAGE_ID) $(DOCKER_REGISTRY)/$(ORG_NAME)/$(REPO_NAME):$(tag);)
+	${INFO} "Tagging complete"
+
+buildtag:
+	${INFO} "Tagging release image with tags $(TAG_ARGS)..."
+	@ $(foreach tag, $(TAG_ARGS), docker tag $(IMAGE_ID) $(DOCKER_REGISTRY)/$(ORG_NAME)/$(REPO_NAME):$(tag).$(BUILD_TAG);)
 	${INFO} "Tagging complete"
 
 YELLOW := "\e[1;33m"

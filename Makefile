@@ -107,3 +107,11 @@ ifeq (tag, $(firstword $(MAKECMDGOALS)))
     endif
     $(eval $(TAG_ARGS):;@:)
 endif
+
+ifeq (buildtag, $(firstword $(MAKECMDGOALS)))
+    TAG_ARGS := $(wordlist 2, $(words $(MAKECMDGOALS)), $(MAKECMDGOALS))
+    ifeq ($(TAG_ARGS), )
+        $(error You must specify a tag)
+    endif
+    $(eval $(TAG_ARGS):;@:)
+endif

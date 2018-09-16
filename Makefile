@@ -72,9 +72,9 @@ clean:
 	${INFO} "Clean complete"
 
 tag:
-	@{INFO} "Tagging release image with tags $(TAG_ARGS)..."
+	${INFO} "Tagging release image with tags $(TAG_ARGS)..."
 	@ $(foreach tag, $(TAG_ARGS), docker tag $(IMAGE_ID) $(DOCKER_REGISTRY)/$(ORG_NAME)/$(REPO_NAME):$(tag);)
-	@{INFO} "Tagging complete"
+	${INFO} "Tagging complete"
 
 YELLOW := "\e[1;33m"
 NC := "\e[0m"

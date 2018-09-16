@@ -58,7 +58,7 @@ release:
 	@ docker-compose -p $(REL_PROJECT) -f $(REL_COMPOSE_FILE) run --rm app manage.py collectstatic --noinput
 	${INFO} "Running database migrations..."
 	@ docker-compose -p $(REL_PROJECT) -f $(REL_COMPOSE_FILE) run --rm app manage.py migrate --noinput
-	@ docker-compose -p $(REL_PROJECT) -f $(REL_COMPOSE_FILE) up app
+	@ docker-compose -p $(REL_PROJECT) -f $(REL_COMPOSE_FILE) up -d app
 	${INFO} "Release complete"
 
 clean:
